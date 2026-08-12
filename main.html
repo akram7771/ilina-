@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      font-family: "Tahoma", sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 0 0 15px #ff69b4;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .cake-image {
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #ff69b4;
+      max-width: 250px;
+    }
+
+    .counter {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 15px;
+      border-radius: 12px;
+      min-width: 70px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+      text-align: center;
+    }
+
+    .number {
+      font-size: 1.8em;
+      font-weight: bold;
+      animation: glow 1s infinite alternate;
+    }
+
+    .label {
+      font-size: 0.8em;
+      margin-top: 5px;
+      color: #fff;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4; }
+      to   { text-shadow: 0 0 15px #fff, 0 0 20px #fff; }
+    }
+
+    .heart-center {
+      font-size: 3em;
+      color: #ff69b4;
+      animation: heartbeat 1s infinite;
+      margin-top: 20px;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    .love-message {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #fff;
+      text-shadow: 0 0 10px #ff69b4;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday My Love 🎉</h1>
+  <h2>Since May 2, 2022 we’ve been together ❤️</h2>
+
+  <!-- صورة الأيدي مع الكعكة -->
+  <img src="https://copilot.microsoft.com/th/id/BCO.27dc6694-8931-49d9-9937-9312711fb539.png" 
+       alt="Hands cutting birthday cake" 
+       class="cake-image">
+
+  <div class="counter">
+    <div class="box"><div id="days" class="number"></div><div class="label">Days</div></div>
+    <div class="box"><div id="hours" class="number"></div><div class="label">Hours</div></div>
+    <div class="box"><div id="minutes" class="number"></div><div class="label">Minutes</div></div>
+    <div class="box"><div id="seconds" class="number"></div><div class="label">Seconds</div></div>
+  </div>
+
+  <div class="heart-center">❤</div>
+
+  <!-- الرسالة الرومانسية -->
+  <p id="loveMessage" class="love-message"></p>
+
+  <script>
+    const startDate = new Date("May 2, 2022 00:00:00");
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // الرسالة
+    const message = `baby my love l ghalya taei nty the best thing in my life had la date li rahi lfo9a 3labali bali mahach nnsaha hyati kml 
+psq hadi the important date in my life w i know bali had la date rahi meaya f kol wa9t w f kol makan
+hadi la date win t3araft b the best women in life li raha na9sam meaha hyati kml li mahach yjoz nhar 
+bla mankon farhan fih w hiya meaya li kol manchof l photo taeaha nabda nadhak wahdi man hobi liha bayna 
+kol mayjoz lyamat binatna rani nhbk kter w nconfermer bali nty the right women for me psq manich 9adr nhbs mal hob dyali lik 
+lyoma habit ndir had l website lina ana wanty bach nkhali haja ttfakrini biha daymen fi kol mara nkon b3id 3lik 
+wala madarbin adokhli l had site ta3arfi chhal ana nhbk w sra prblm brk w nwalo psq hna tawladna lba3dana baby`;
+
+    const words = message.split(" ");
+    let index = 0;
+
+    function typeMessage() {
+      if (index < words.length) {
+        document.getElementById("loveMessage").innerHTML += words[index] + " ";
+        index++;
+        window.scrollBy(0, 20); // ينزل الصفحة مع كل كلمة
+        setTimeout(typeMessage, 200);
+      }
+    }
+
+    window.onload = typeMessage;
+  </script>
+</body>
+</html>
